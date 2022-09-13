@@ -1,0 +1,60 @@
+<!doctype html>
+{% extends 'base.html' %}
+{% block title %}
+    USER Profile
+{% endblock %}
+{% block content %}
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/style1.css') }}">
+    
+
+    
+<div class="container d-flex justify-content-center mt-5">
+
+	<div class="card">
+		
+		<div class="top-container">
+			
+			<img src="{{ url_for('static', filename='images/1.jpg') }}" alt="sing up image" class="img-fluid profile-image" width="70">
+			
+			<div class="ml-3">
+                
+				<h5 class="name">{{user['name']}}</h5>
+				<p class="mail">{{user['email']}}</p>
+                {
+			</div>
+		</div>
+
+
+		<div class="middle-container d-flex justify-content-between align-items-center mt-3 p-2">
+				<div class="dollar-div px-3">
+					
+					<div class="round-div"><i class="fa fa-dollar dollar"></i></div>
+
+				</div>
+				<div class="d-flex flex-column text-right mr-2">
+					<span class="current-balance">Current Balance</span>
+					<span class="amount"><span class="dollar-sign"></span>{{user['budget']}}৳</span>
+				</div>
+
+		</div>
+        <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Owned Item
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                {% for own in owns %}
+                {% if own.name==current_user %}
+              <a class="dropdown-item">{{ own.name2 }} price: {{ own.price }}৳</a>
+                
+                {% endif %}
+                {% endfor %}
+            </div>
+          </div>
+		
+		
+		
+		
+	</div>
+	
+</div>
+{% endblock %}
